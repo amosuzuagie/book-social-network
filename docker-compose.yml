@@ -1,26 +1,44 @@
 services:
   postgres:
     container_name: postgres-sql-bsn
-    image: postgres
+    image: postgres:16
     environment:
-      POSTGRES_USER: mstramohz
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ihvadream
       PGDATA: /var/lib/postgresql/data
       POSTGRES_DB: book_social_network
     volumes:
-      - postgres:/data/postgres
+      - postgres:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - "5432:5432"
     networks:
       - bsn-network
     restart: unless-stopped
-
-  mail-dev:
-    container_name: mail-dev-bsn
+  maildev:
+    container_name: bsn-maildev
     image: maildev/maildev
     ports:
-      - 1080:1080
-      - 1025:1025
+      - "1080:1080"
+      - "1025:1025"
+  bsn-api:
+    container_name: bsn-api
+    image: bsn/bsn:1.0.3
+    ports:
+      - "8088:8088"
+    networks:
+      - bsn-network
+    depends_on:
+      - postgres
+
+  bsn-client:
+    container_name: bsn-client
+    image: bsn/bsn-client:1.0.0
+    ports:
+      - "8080:80"
+    networks:
+      - bsn-network
+    depends_on:
+      - bsn-api
 
 networks:
   bsn-network:

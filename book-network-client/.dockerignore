@@ -1,0 +1,42 @@
+# .dockerignore
+# Ignore node_modules directory
+node_modules
+
+# Ignore any logs
+*.log
+
+# Ignore environment files
+.env
+
+# Ignore Dockerfile
+Dockerfile
+
+# Ignore build directories
+build
+
+# Ignore all .DS_Store files (macOS)
+.DS_Store
+
+# Ignore temporary files created by editors
+*.swp
+
+
+# Ignore unnecessary files and directories
+node_modules/
+dist/
+.vscode/
+.angular/
+.editorconfig
+.git/
+.gitignore
+README.md
+Dockerfile
+.dockerignore
+
+# Exclude everything but ensure key files are included
+!src/
+!public/
+!angular.json
+!package.json
+!package-lock.json
+!tsconfig*.json

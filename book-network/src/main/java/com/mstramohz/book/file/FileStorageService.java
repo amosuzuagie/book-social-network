@@ -1,6 +1,5 @@
 package com.mstramohz.book.file;
 
-import com.mstramohz.book.book.Book;
 import jakarta.annotation.Nonnull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
